@@ -101,14 +101,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/learning", async (req, res) => {
     try {
       const { level, category } = req.query;
-      let content;
+      let content: Awaited<ReturnType<typeof storage.getLearningContentByLevel>> = [];
       
       if (level) {
         content = await storage.getLearningContentByLevel(level as string);
       } else if (category) {
         content = await storage.getLearningContentByCategory(category as string);
-      } else {
-        content = [];
       }
       
       res.json(content);
