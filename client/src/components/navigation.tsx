@@ -31,40 +31,44 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
   return (
     <>
       {/* Header */}
-      <header className="bg-card shadow-lg border-b border-border">
-        <div className="container mx-auto px-4 py-4">
+      <header className="bg-card shadow-lg border-b border-border sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4" data-testid="header-logo">
+            <div className="flex items-center space-x-3" data-testid="header-logo">
               <div className="relative">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-primary-foreground font-bold text-xl font-telugu">తె</span>
+                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-primary-foreground font-bold text-lg font-telugu">తె</span>
                 </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full border-2 border-background"></div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full border-2 border-background"></div>
               </div>
-              <div>
-                <h1 className="text-2xl font-bold text-primary">Telugu Sanskriti</h1>
-                <p className="text-sm text-muted-foreground">Preserving Our Cultural Heritage</p>
+              <div className="hidden sm:block">
+                <h1 className="text-xl font-bold text-primary">Telugu Sanskriti</h1>
+                <p className="text-xs text-muted-foreground">Preserving Our Cultural Heritage</p>
+              </div>
+              <div className="sm:hidden">
+                <h1 className="text-lg font-bold text-primary">Telugu Sanskriti</h1>
               </div>
             </div>
             
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-1" data-testid="desktop-navigation">
+            <nav className="hidden lg:flex space-x-1" data-testid="desktop-navigation">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
                   <Button
                     key={tab.id}
                     variant={activeTab === tab.id ? "default" : "ghost"}
+                    size="sm"
                     onClick={() => setActiveTab(tab.id)}
                     className={cn(
-                      "font-medium transition-all",
+                      "font-medium transition-all text-xs",
                       activeTab === tab.id
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-secondary hover:text-secondary-foreground"
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
                     )}
                     data-testid={`tab-${tab.id}`}
                   >
-                    <Icon className="mr-2 h-4 w-4" />
+                    <Icon className="mr-1.5 h-3.5 w-3.5" />
                     {tab.label}
                   </Button>
                 );
@@ -74,39 +78,40 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
-              size="icon"
-              className="md:hidden text-primary"
+              size="sm"
+              className="lg:hidden text-primary hover:bg-primary/10"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               data-testid="button-mobile-menu"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             </Button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Dropdown */}
       <div className={cn(
-        "md:hidden bg-card border-b border-border transition-all duration-300",
+        "lg:hidden bg-card border-b border-border transition-all duration-300 shadow-lg",
         isMobileMenuOpen ? "block" : "hidden"
       )}>
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex flex-col space-y-2" data-testid="mobile-navigation">
+        <div className="container mx-auto px-4 py-3">
+          <div className="grid grid-cols-2 gap-2" data-testid="mobile-navigation">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
                 <Button
                   key={tab.id}
                   variant={activeTab === tab.id ? "default" : "ghost"}
+                  size="sm"
                   onClick={() => {
                     setActiveTab(tab.id);
                     setIsMobileMenuOpen(false);
                   }}
                   className={cn(
-                    "justify-start font-medium transition-all",
+                    "justify-start font-medium transition-all text-sm",
                     activeTab === tab.id
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:bg-secondary hover:text-secondary-foreground"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
                   )}
                   data-testid={`tab-mobile-${tab.id}`}
                 >
@@ -115,31 +120,6 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                 </Button>
               );
             })}
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Tab Strip (Alternative compact view) */}
-      <div className="md:hidden bg-card border-b border-border">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex overflow-x-auto space-x-2 pb-2" data-testid="mobile-tab-strip">
-            {tabs.map((tab) => (
-              <Button
-                key={tab.id}
-                variant={activeTab === tab.id ? "default" : "ghost"}
-                size="sm"
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  "whitespace-nowrap text-sm transition-all",
-                  activeTab === tab.id
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground"
-                )}
-                data-testid={`tab-strip-${tab.id}`}
-              >
-                {tab.mobileLabel || tab.label}
-              </Button>
-            ))}
           </div>
         </div>
       </div>
