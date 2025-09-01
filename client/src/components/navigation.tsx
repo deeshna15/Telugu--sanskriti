@@ -35,8 +35,11 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4" data-testid="header-logo">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl font-telugu">తె</span>
+              <div className="relative">
+                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-primary-foreground font-bold text-xl font-telugu">తె</span>
+                </div>
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full border-2 border-background"></div>
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-primary">Telugu Sanskriti</h1>

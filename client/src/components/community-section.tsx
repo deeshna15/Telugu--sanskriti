@@ -35,16 +35,31 @@ export default function CommunitySection() {
       
       {/* Community Stats */}
       <div className="grid md:grid-cols-4 gap-6 mb-12">
-        {stats.map((stat, index) => (
-          <Card key={index} data-testid={`stat-${index}`}>
-            <CardContent className="text-center p-6">
-              <div className={`text-3xl font-bold mb-2 ${stat.color}`}>
-                {stat.value}
+        {stats.map((stat, index) => {
+          const statImages = [
+            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+            "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+            "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+          ];
+          return (
+            <Card key={index} data-testid={`stat-${index}`} className="overflow-hidden relative">
+              <div className="absolute inset-0">
+                <img 
+                  src={statImages[index]}
+                  alt={stat.label}
+                  className="w-full h-full object-cover opacity-20"
+                />
               </div>
-              <div className="text-muted-foreground">{stat.label}</div>
-            </CardContent>
-          </Card>
-        ))}
+              <CardContent className="text-center p-6 relative">
+                <div className={`text-3xl font-bold mb-2 ${stat.color}`}>
+                  {stat.value}
+                </div>
+                <div className="text-muted-foreground font-medium">{stat.label}</div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
       {/* Community Events */}

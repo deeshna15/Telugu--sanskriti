@@ -69,9 +69,19 @@ export default function InteractiveSection() {
       </h2>
       
       {/* Quiz Section */}
-      <Card data-testid="section-quiz">
+      <Card data-testid="section-quiz" className="overflow-hidden">
+        <div className="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=300"
+            alt="Quiz challenge"
+            className="w-full h-32 object-cover"
+          />
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute bottom-4 left-6">
+            <h3 className="text-2xl font-semibold text-white">Telugu Quiz Challenge</h3>
+          </div>
+        </div>
         <CardContent className="p-8">
-          <h3 className="text-2xl font-semibold mb-6 text-foreground">Telugu Quiz Challenge</h3>
           
           {currentQuiz && (
             <div className="space-y-6">
@@ -153,11 +163,21 @@ export default function InteractiveSection() {
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Riddles Section */}
         {currentRiddle && (
-          <Card data-testid="card-riddles">
+          <Card data-testid="card-riddles" className="overflow-hidden">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200"
+                alt="Telugu riddles"
+                className="w-full h-32 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <div className="absolute bottom-3 left-4">
+                <h3 className="text-lg font-semibold text-white">
+                  Telugu Riddles (పొడుపుకథలు)
+                </h3>
+              </div>
+            </div>
             <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-4 text-foreground">
-                Telugu Riddles (పొడుపుకథలు)
-              </h3>
               <div className="bg-accent/10 p-4 rounded-lg mb-4">
                 <p className="font-telugu text-lg text-foreground mb-2">
                   {currentRiddle.riddleTelugu}
@@ -192,11 +212,21 @@ export default function InteractiveSection() {
 
         {/* Proverbs Section */}
         {currentProverb && (
-          <Card data-testid="card-proverbs">
+          <Card data-testid="card-proverbs" className="overflow-hidden">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200"
+                alt="Telugu proverbs"
+                className="w-full h-32 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <div className="absolute bottom-3 left-4">
+                <h3 className="text-lg font-semibold text-white">
+                  Proverbs (సామెతలు)
+                </h3>
+              </div>
+            </div>
             <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-4 text-foreground">
-                Proverbs (సామెతలు)
-              </h3>
               <div className="bg-secondary/10 p-4 rounded-lg mb-4">
                 <p className="font-telugu text-lg text-foreground mb-2">
                   {currentProverb.proverbTelugu}
@@ -219,15 +249,23 @@ export default function InteractiveSection() {
       </div>
 
       {/* Word of the Day */}
-      <div className="bg-gradient-to-r from-primary to-secondary p-8 rounded-xl text-white text-center" data-testid="section-word-of-day">
-        <h3 className="text-2xl font-bold mb-4">Word of the Day</h3>
-        <div className="font-telugu text-4xl mb-2">సంస్కృతి</div>
-        <div className="text-xl mb-2">Sanskriti</div>
-        <div className="opacity-90">Culture, Refinement, Civilization</div>
-        <p className="mt-4 opacity-90 max-w-2xl mx-auto">
-          The essence of refinement and cultural heritage that defines the Telugu way of life, 
-          encompassing traditions, arts, and values.
-        </p>
+      <div className="relative overflow-hidden rounded-xl" data-testid="section-word-of-day">
+        <img 
+          src="https://images.unsplash.com/photo-1518709268805-4e9042af2ac1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400"
+          alt="Telugu culture"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-secondary/90"></div>
+        <div className="relative p-8 text-white text-center">
+          <h3 className="text-2xl font-bold mb-4">Word of the Day</h3>
+          <div className="font-telugu text-4xl mb-2">సంస్కృతి</div>
+          <div className="text-xl mb-2">Sanskriti</div>
+          <div className="opacity-90">Culture, Refinement, Civilization</div>
+          <p className="mt-4 opacity-90 max-w-2xl mx-auto">
+            The essence of refinement and cultural heritage that defines the Telugu way of life, 
+            encompassing traditions, arts, and values.
+          </p>
+        </div>
       </div>
     </div>
   );

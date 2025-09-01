@@ -254,6 +254,22 @@ export default function LearningSection() {
         {currentLesson && (
           <Card className="p-8">
             <div className="text-center mb-6">
+              {/* Lesson type image */}
+              <div className="mb-4">
+                <img 
+                  src={
+                    currentLesson.type === "vocabulary" 
+                      ? "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300"
+                      : currentLesson.type === "grammar"
+                      ? "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300"
+                      : currentLesson.type === "exercise"
+                      ? "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300"
+                      : "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300"
+                  }
+                  alt={`${currentLesson.type} lesson`}
+                  className="w-full h-32 object-cover rounded-lg"
+                />
+              </div>
               <Badge variant="secondary" className="mb-2">
                 {currentLesson.type.charAt(0).toUpperCase() + currentLesson.type.slice(1)} Lesson
               </Badge>
@@ -392,17 +408,29 @@ export default function LearningSection() {
       <div className="grid lg:grid-cols-3 gap-8 mb-12">
         {levels.map((level, index) => {
           const Icon = level.icon;
+          const levelImages = [
+            "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200", // Beginner
+            "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200", // Intermediate  
+            "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200"  // Advanced
+          ];
           return (
-            <Card key={index} data-testid={`card-level-${level.title.toLowerCase()}`}>
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className={`w-12 h-12 bg-${level.color} rounded-full flex items-center justify-center mr-4`}>
+            <Card key={index} data-testid={`card-level-${level.title.toLowerCase()}`} className="overflow-hidden">
+              <div className="relative">
+                <img 
+                  src={levelImages[index]}
+                  alt={`${level.title} level`}
+                  className="w-full h-40 object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <div className={`w-12 h-12 bg-${level.color} rounded-full flex items-center justify-center shadow-lg`}>
                     <Icon className={`h-6 w-6 text-${level.color}-foreground`} />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground">{level.title}</h3>
-                    <p className="text-sm text-muted-foreground">{level.subtitle}</p>
-                  </div>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-foreground">{level.title}</h3>
+                  <p className="text-sm text-muted-foreground">{level.subtitle}</p>
                 </div>
                 <div className="space-y-3">
                   {level.topics.map((topic, topicIndex) => (
