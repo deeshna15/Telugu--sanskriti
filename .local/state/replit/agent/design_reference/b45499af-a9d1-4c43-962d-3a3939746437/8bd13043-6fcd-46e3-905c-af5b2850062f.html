@@ -1,0 +1,775 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telugu Sanskriti - Preserving Our Heritage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)", 
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "system-ui", "sans-serif"],
+                    telugu: ["Noto Sans Telugu", "serif"],
+                }
+            },
+        }
+    };
+    </script>
+    <style>
+        :root {
+            --background: hsl(45 30% 98%);
+            --foreground: hsl(25 15% 15%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(25 15% 15%);
+            --primary: hsl(15 95% 60%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(175 65% 40%);
+            --secondary-foreground: hsl(0 0% 100%);
+            --muted: hsl(45 20% 96%);
+            --muted-foreground: hsl(25 15% 45%);
+            --accent: hsl(45 100% 62%);
+            --accent-foreground: hsl(25 15% 15%);
+            --destructive: hsl(350 70% 55%);
+            --destructive-foreground: hsl(0 0% 100%);
+            --border: hsl(45 20% 85%);
+            --ring: hsl(15 95% 60%);
+            --radius: 0.75rem;
+        }
+        
+        .cultural-pattern {
+            background-image: radial-gradient(circle at 1px 1px, hsl(45 100% 62% / 0.1) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .quiz-option:hover {
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
+        }
+        
+        .cultural-card {
+            transition: all 0.3s ease;
+        }
+        
+        .cultural-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px hsl(15 95% 60% / 0.15);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Telugu:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-background text-foreground cultural-pattern min-h-screen">
+    <!-- Header -->
+    <header class="bg-card shadow-lg border-b border-border">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-primary-foreground font-bold text-xl font-telugu">తె</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-primary">Telugu Sanskriti</h1>
+                        <p class="text-sm text-muted-foreground">Preserving Our Cultural Heritage</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-1">
+                    <button class="tab-btn active px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium transition-all" data-tab="about">
+                        <i class="fas fa-info-circle mr-2"></i>About
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-lg bg-muted text-muted-foreground hover:bg-secondary hover:text-secondary-foreground font-medium transition-all" data-tab="literature">
+                        <i class="fas fa-book mr-2"></i>Literature & Arts
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-lg bg-muted text-muted-foreground hover:bg-secondary hover:text-secondary-foreground font-medium transition-all" data-tab="community">
+                        <i class="fas fa-users mr-2"></i>Community
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-lg bg-muted text-muted-foreground hover:bg-secondary hover:text-secondary-foreground font-medium transition-all" data-tab="learning">
+                        <i class="fas fa-graduation-cap mr-2"></i>Start Learning
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-lg bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground font-medium transition-all" data-tab="interactive">
+                        <i class="fas fa-gamepad mr-2"></i>Interactive
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-lg bg-muted text-muted-foreground hover:bg-secondary hover:text-secondary-foreground font-medium transition-all" data-tab="stories">
+                        <i class="fas fa-scroll mr-2"></i>Folk Stories
+                    </button>
+                </nav>
+                <button class="md:hidden text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden bg-card border-b border-border">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex overflow-x-auto space-x-2 pb-2">
+                <button class="tab-btn active whitespace-nowrap px-3 py-1 rounded-md bg-primary text-primary-foreground text-sm" data-tab="about">About</button>
+                <button class="tab-btn whitespace-nowrap px-3 py-1 rounded-md bg-muted text-muted-foreground text-sm" data-tab="literature">Literature</button>
+                <button class="tab-btn whitespace-nowrap px-3 py-1 rounded-md bg-muted text-muted-foreground text-sm" data-tab="community">Community</button>
+                <button class="tab-btn whitespace-nowrap px-3 py-1 rounded-md bg-muted text-muted-foreground text-sm" data-tab="learning">Learning</button>
+                <button class="tab-btn whitespace-nowrap px-3 py-1 rounded-md bg-muted text-muted-foreground text-sm" data-tab="interactive">Interactive</button>
+                <button class="tab-btn whitespace-nowrap px-3 py-1 rounded-md bg-muted text-muted-foreground text-sm" data-tab="stories">Stories</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- About Tab -->
+        <div id="about" class="tab-content active">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-primary mb-4">Welcome to Telugu Sanskriti</h2>
+                <p class="text-lg text-muted-foreground max-w-3xl mx-auto">Discover the rich heritage, vibrant culture, and timeless traditions of the Telugu language and its people. Join us on a journey through literature, arts, community, and learning.</p>
+            </div>
+
+            <!-- Hero Image -->
+            <!-- Traditional Telugu cultural celebration with dancers in colorful attire -->
+            <div class="mb-12 rounded-xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600" alt="Telugu cultural celebration" class="w-full h-96 object-cover">
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="cultural-card bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-language text-2xl text-primary-foreground"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-foreground">Rich Language Heritage</h3>
+                    <p class="text-muted-foreground">Telugu is one of the oldest Dravidian languages, spoken by over 75 million people worldwide with a literary tradition spanning over 1000 years.</p>
+                </div>
+
+                <div class="cultural-card bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-palette text-2xl text-secondary-foreground"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-foreground">Vibrant Arts & Culture</h3>
+                    <p class="text-muted-foreground">From classical dance forms like Kuchipudi to intricate handicrafts, Telugu culture is a tapestry of artistic expressions and traditions.</p>
+                </div>
+
+                <div class="cultural-card bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-heart text-2xl text-accent-foreground"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-foreground">Strong Community Bond</h3>
+                    <p class="text-muted-foreground">Telugu communities worldwide maintain strong connections through festivals, traditions, and shared cultural values that unite generations.</p>
+                </div>
+            </div>
+
+            <!-- Mission Statement -->
+            <div class="bg-gradient-to-r from-primary to-secondary p-8 rounded-xl text-center">
+                <h3 class="text-2xl font-bold text-white mb-4">Our Mission</h3>
+                <p class="text-white/90 text-lg max-w-4xl mx-auto">To preserve, promote, and share the beautiful Telugu language and culture with the world, ensuring future generations can connect with their rich heritage through modern, engaging experiences.</p>
+            </div>
+        </div>
+
+        <!-- Literature & Arts Tab -->
+        <div id="literature" class="tab-content">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center">Literature & Arts</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <h3 class="text-2xl font-semibold mb-4 text-foreground">Classical Literature</h3>
+                    <!-- Collection of classic Indian literature books with ornate covers -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Classical literature books" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <p class="text-muted-foreground mb-4">Explore the golden age of Telugu literature with works from legendary poets like Nannaya, Tikkana, and Yerrapragada who translated the Mahabharata into Telugu.</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-primary rounded-full"></div>
+                            <span class="text-foreground">Andhra Mahabharatam - The Telugu Mahabharata</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-primary rounded-full"></div>
+                            <span class="text-foreground">Sumati Shatakam - Moral verses by Baddena</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-primary rounded-full"></div>
+                            <span class="text-foreground">Amuktamalyada - Epic by Sri Krishnadevaraya</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <h3 class="text-2xl font-semibold mb-4 text-foreground">Traditional Arts</h3>
+                    <!-- Traditional Indian craftspeople working on intricate artwork -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Traditional arts and crafts" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <p class="text-muted-foreground mb-4">Discover the rich artistic heritage including classical dance, music, and traditional crafts that define Telugu culture.</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-secondary rounded-full"></div>
+                            <span class="text-foreground">Kuchipudi - Classical dance form</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-secondary rounded-full"></div>
+                            <span class="text-foreground">Kalamkari - Traditional textile art</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-secondary rounded-full"></div>
+                            <span class="text-foreground">Carnatic Music - Classical music tradition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Poets Section -->
+            <div class="bg-muted p-8 rounded-xl">
+                <h3 class="text-2xl font-bold text-center mb-8 text-foreground">Legendary Telugu Poets</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl font-telugu text-primary-foreground">కవి</span>
+                        </div>
+                        <h4 class="font-semibold text-foreground">Vemana</h4>
+                        <p class="text-sm text-muted-foreground">Philosophical poet known for his four-line verses</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-secondary rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl font-telugu text-secondary-foreground">రాజ</span>
+                        </div>
+                        <h4 class="font-semibold text-foreground">Sri Krishnadevaraya</h4>
+                        <p class="text-sm text-muted-foreground">Vijayanagara emperor and accomplished poet</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-accent rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl font-telugu text-accent-foreground">కల</span>
+                        </div>
+                        <h4 class="font-semibold text-foreground">Kaloji Narayana Rao</h4>
+                        <p class="text-sm text-muted-foreground">Modern poet and freedom fighter</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Tab -->
+        <div id="community" class="tab-content">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center">Our Global Telugu Community</h2>
+            
+            <!-- Community Stats -->
+            <div class="grid md:grid-cols-4 gap-6 mb-12">
+                <div class="text-center bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="text-3xl font-bold text-primary mb-2">75M+</div>
+                    <div class="text-muted-foreground">Global Speakers</div>
+                </div>
+                <div class="text-center bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="text-3xl font-bold text-secondary mb-2">50+</div>
+                    <div class="text-muted-foreground">Countries</div>
+                </div>
+                <div class="text-center bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="text-3xl font-bold text-accent mb-2">1000+</div>
+                    <div class="text-muted-foreground">Years of Literature</div>
+                </div>
+                <div class="text-center bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="text-3xl font-bold text-destructive mb-2">8th</div>
+                    <div class="text-muted-foreground">Most Spoken in India</div>
+                </div>
+            </div>
+
+            <!-- Community Events -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                <!-- Festival celebrations with people in traditional Indian attire -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden border border-border">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Community celebration" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-foreground">Annual Ugadi Celebrations</h3>
+                        <p class="text-muted-foreground mb-4">Join Telugu communities worldwide in celebrating the New Year with traditional food, cultural programs, and community bonding.</p>
+                        <div class="flex items-center text-sm text-muted-foreground">
+                            <i class="fas fa-calendar mr-2"></i>
+                            <span>March-April Every Year</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group of people engaged in cultural learning activities -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden border border-border">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Cultural learning gathering" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-foreground">Language Learning Circles</h3>
+                        <p class="text-muted-foreground mb-4">Connect with local Telugu learning groups where beginners and experts share knowledge through interactive sessions.</p>
+                        <div class="flex items-center text-sm text-muted-foreground">
+                            <i class="fas fa-users mr-2"></i>
+                            <span>Weekly Meetups Worldwide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Contributions -->
+            <div class="bg-gradient-to-r from-secondary to-primary p-8 rounded-xl text-white">
+                <h3 class="text-2xl font-bold mb-6 text-center">How You Can Contribute</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <i class="fas fa-pencil-alt text-3xl mb-4 opacity-90"></i>
+                        <h4 class="font-semibold mb-2">Share Stories</h4>
+                        <p class="text-sm opacity-90">Contribute folk tales, family stories, or cultural experiences</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-chalkboard-teacher text-3xl mb-4 opacity-90"></i>
+                        <h4 class="font-semibold mb-2">Teach Others</h4>
+                        <p class="text-sm opacity-90">Help others learn Telugu language and culture</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-hands-helping text-3xl mb-4 opacity-90"></i>
+                        <h4 class="font-semibold mb-2">Volunteer</h4>
+                        <p class="text-sm opacity-90">Support community events and cultural preservation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Learning Tab -->
+        <div id="learning" class="tab-content">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center">Start Your Telugu Journey</h2>
+            
+            <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <!-- Beginner Level -->
+                <div class="bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-seedling text-xl text-secondary-foreground"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-foreground">Beginner</h3>
+                            <p class="text-sm text-muted-foreground">Start from basics</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-secondary rounded-full"></div>
+                            <span class="text-foreground">Telugu Alphabet (అక్షరాలు)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-secondary rounded-full"></div>
+                            <span class="text-foreground">Basic Greetings</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-secondary rounded-full"></div>
+                            <span class="text-foreground">Numbers & Colors</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-secondary rounded-full"></div>
+                            <span class="text-foreground">Family Relations</span>
+                        </div>
+                    </div>
+                    <button class="w-full mt-6 bg-secondary text-secondary-foreground py-3 rounded-lg font-medium hover:opacity-90 transition-all">Start Learning</button>
+                </div>
+
+                <!-- Intermediate Level -->
+                <div class="bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-tree text-xl text-primary-foreground"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-foreground">Intermediate</h3>
+                            <p class="text-sm text-muted-foreground">Build vocabulary</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            <span class="text-foreground">Conversation Skills</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            <span class="text-foreground">Grammar Rules</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            <span class="text-foreground">Cultural Context</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            <span class="text-foreground">Reading Practice</span>
+                        </div>
+                    </div>
+                    <button class="w-full mt-6 bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:opacity-90 transition-all">Continue Learning</button>
+                </div>
+
+                <!-- Advanced Level -->
+                <div class="bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-mountain text-xl text-accent-foreground"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-foreground">Advanced</h3>
+                            <p class="text-sm text-muted-foreground">Master the language</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                            <span class="text-foreground">Literary Works</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                            <span class="text-foreground">Poetry & Prose</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                            <span class="text-foreground">Dialects & Variations</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                            <span class="text-foreground">Teaching Others</span>
+                        </div>
+                    </div>
+                    <button class="w-full mt-6 bg-accent text-accent-foreground py-3 rounded-lg font-medium hover:opacity-90 transition-all">Master Telugu</button>
+                </div>
+            </div>
+
+            <!-- Sample Lesson -->
+            <div class="bg-muted p-8 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6 text-center text-foreground">Sample Lesson: Basic Greetings</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-foreground">Common Greetings</h4>
+                        <div class="space-y-4">
+                            <div class="bg-card p-4 rounded-lg border border-border">
+                                <div class="font-telugu text-xl text-primary mb-2">నమస్కారం</div>
+                                <div class="text-foreground font-medium">Namaskaram</div>
+                                <div class="text-sm text-muted-foreground">Hello/Goodbye (formal)</div>
+                            </div>
+                            <div class="bg-card p-4 rounded-lg border border-border">
+                                <div class="font-telugu text-xl text-primary mb-2">వందనలు</div>
+                                <div class="text-foreground font-medium">Vandanalu</div>
+                                <div class="text-sm text-muted-foreground">Respectful greetings</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-foreground">Daily Expressions</h4>
+                        <div class="space-y-4">
+                            <div class="bg-card p-4 rounded-lg border border-border">
+                                <div class="font-telugu text-xl text-secondary mb-2">ధన్యవాదాలు</div>
+                                <div class="text-foreground font-medium">Dhanyavadalu</div>
+                                <div class="text-sm text-muted-foreground">Thank you</div>
+                            </div>
+                            <div class="bg-card p-4 rounded-lg border border-border">
+                                <div class="font-telugu text-xl text-secondary mb-2">క్షమించండి</div>
+                                <div class="text-foreground font-medium">Kshaminchand</div>
+                                <div class="text-sm text-muted-foreground">Excuse me/Sorry</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Tab -->
+        <div id="interactive" class="tab-content">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center">Interactive Learning</h2>
+            
+            <!-- Quiz Section -->
+            <div class="bg-card p-8 rounded-xl shadow-lg border border-border mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-foreground">Telugu Quiz Challenge</h3>
+                <div id="quiz-container">
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium mb-4 text-foreground">What does "నమస్కారం" mean?</h4>
+                        <div class="space-y-3">
+                            <button class="quiz-option w-full text-left p-4 rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all" data-answer="correct">
+                                Hello/Goodbye
+                            </button>
+                            <button class="quiz-option w-full text-left p-4 rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all" data-answer="wrong">
+                                Thank you
+                            </button>
+                            <button class="quiz-option w-full text-left p-4 rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all" data-answer="wrong">
+                                Good morning
+                            </button>
+                            <button class="quiz-option w-full text-left p-4 rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all" data-answer="wrong">
+                                How are you?
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm text-muted-foreground mb-4">Question 1 of 5</div>
+                        <div class="w-full bg-muted rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 20%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riddles Section -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <h3 class="text-xl font-semibold mb-4 text-foreground">Telugu Riddles (పొడుపుకథలు)</h3>
+                    <div class="bg-accent/10 p-4 rounded-lg mb-4">
+                        <p class="font-telugu text-lg text-foreground mb-2">రాత్రికి పుట్టిన, పగలికి చస్తాను. నేను ఎవరిని?</p>
+                        <p class="text-sm text-muted-foreground italic">Born at night, die in the day. Who am I?</p>
+                    </div>
+                    <button class="bg-accent text-accent-foreground px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-all">Show Answer</button>
+                    <div id="riddle-answer" class="mt-4 p-3 bg-muted rounded-lg hidden">
+                        <p class="text-foreground font-medium">Answer: వెలుగు (Light/Lamp)</p>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 rounded-xl shadow-lg border border-border">
+                    <h3 class="text-xl font-semibold mb-4 text-foreground">Proverbs (సామెతలు)</h3>
+                    <div class="bg-secondary/10 p-4 rounded-lg mb-4">
+                        <p class="font-telugu text-lg text-foreground mb-2">అల్లుడు వచ్చాక ఆవిమించు చచ్చింది</p>
+                        <p class="text-sm text-muted-foreground italic">The mustard plant died after the son-in-law arrived</p>
+                    </div>
+                    <div class="text-sm text-muted-foreground">
+                        <strong>Meaning:</strong> People often show off excessively when important guests arrive, sometimes causing problems.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word of the Day -->
+            <div class="bg-gradient-to-r from-primary to-secondary p-8 rounded-xl text-white text-center">
+                <h3 class="text-2xl font-bold mb-4">Word of the Day</h3>
+                <div class="font-telugu text-4xl mb-2">సంస్కృతి</div>
+                <div class="text-xl mb-2">Sanskriti</div>
+                <div class="opacity-90">Culture, Refinement, Civilization</div>
+                <p class="mt-4 opacity-90 max-w-2xl mx-auto">The essence of refinement and cultural heritage that defines the Telugu way of life, encompassing traditions, arts, and values.</p>
+            </div>
+        </div>
+
+        <!-- Folk Stories Tab -->
+        <div id="stories" class="tab-content">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center">Telugu Folk Stories</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                <!-- Story 1 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden border border-border">
+                    <!-- Illustrated scene from an Indian folk tale with characters in traditional dress -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Folk tale illustration" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-foreground">The Clever Tenali Rama</h3>
+                        <p class="text-muted-foreground mb-4">One of the most beloved characters in Telugu folklore, Tenali Rama was known for his wit and wisdom. In this story, he outsmarts a proud scholar who challenges the royal court...</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-muted-foreground">Traditional Tale</span>
+                            <button class="text-primary hover:text-primary/80 font-medium">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden border border-border">
+                    <!-- Mystical forest scene with ancient trees and magical atmosphere -->
+                    <img src="https://pixabay.com/get/g1d8cd1fe8821ec721accbe1f64a6c58bd83228cfe6575b4865b0f7e2864fbb47f681f0b82c5499578130393613bad7c2ce930dfb12d711a9ebc4a0537ebea656_1280.jpg" alt="Mystical forest" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-foreground">The Magic Banyan Tree</h3>
+                        <p class="text-muted-foreground mb-4">A mystical tale about a magical banyan tree that granted wishes to those pure of heart. A young girl's encounter with the tree teaches valuable lessons about kindness and gratitude...</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-muted-foreground">Moral Tale</span>
+                            <button class="text-primary hover:text-primary/80 font-medium">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden border border-border">
+                    <!-- Royal palace scene with ornate architecture and traditional Indian design -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Royal palace" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-foreground">The Princess and the Farmer</h3>
+                        <p class="text-muted-foreground mb-4">A heartwarming story about a princess who learns the value of hard work and humility from a simple farmer. Their unlikely friendship changes both their lives forever...</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-muted-foreground">Love Story</span>
+                            <button class="text-primary hover:text-primary/80 font-medium">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 4 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden border border-border">
+                    <!-- Village scene with traditional Indian houses and people in daily life -->
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Traditional village" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-foreground">The Generous Merchant</h3>
+                        <p class="text-muted-foreground mb-4">A story about a wealthy merchant who discovers that true wealth comes not from gold and jewels, but from the kindness and respect of his community...</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-muted-foreground">Wisdom Tale</span>
+                            <button class="text-primary hover:text-primary/80 font-medium">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Section -->
+            <div class="bg-muted p-8 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6 text-center text-foreground">Latest Blog Posts</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <article class="bg-card p-6 rounded-lg border border-border">
+                        <h4 class="text-lg font-semibold mb-3 text-foreground">The Evolution of Telugu Script</h4>
+                        <p class="text-muted-foreground text-sm mb-4">Explore how the beautiful Telugu script has evolved over centuries, from ancient inscriptions to modern digital typography...</p>
+                        <div class="flex items-center justify-between text-sm text-muted-foreground">
+                            <span>Dec 15, 2023</span>
+                            <a href="#" class="text-primary hover:text-primary/80">Read More</a>
+                        </div>
+                    </article>
+                    
+                    <article class="bg-card p-6 rounded-lg border border-border">
+                        <h4 class="text-lg font-semibold mb-3 text-foreground">Telugu Festivals Around the World</h4>
+                        <p class="text-muted-foreground text-sm mb-4">Discover how Telugu communities across the globe celebrate traditional festivals while adapting to local cultures...</p>
+                        <div class="flex items-center justify-between text-sm text-muted-foreground">
+                            <span>Dec 10, 2023</span>
+                            <a href="#" class="text-primary hover:text-primary/80">Read More</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-border mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-primary-foreground font-bold font-telugu">తె</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary">Telugu Sanskriti</h3>
+                </div>
+                <p class="text-muted-foreground mb-6 max-w-2xl mx-auto">Preserving and promoting the beautiful Telugu language and culture for future generations. Join us in this journey of cultural celebration and learning.</p>
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-muted-foreground">© 2023 Telugu Sanskriti. Made with ❤️ for Telugu language and culture.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        (function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function switchTab(targetTab) {
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.remove('bg-primary', 'text-primary-foreground');
+                    btn.classList.add('bg-muted', 'text-muted-foreground');
+                });
+
+                // Show target tab content
+                const targetContent = document.getElementById(targetTab);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+
+                // Add active class to clicked button
+                const activeButtons = document.querySelectorAll(`[data-tab="${targetTab}"]`);
+                activeButtons.forEach(btn => {
+                    btn.classList.add('active');
+                    btn.classList.remove('bg-muted', 'text-muted-foreground');
+                    btn.classList.add('bg-primary', 'text-primary-foreground');
+                });
+            }
+
+            // Add click listeners to all tab buttons
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.getAttribute('data-tab');
+                    switchTab(targetTab);
+                });
+            });
+
+            // Quiz functionality
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            quizOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const isCorrect = option.getAttribute('data-answer') === 'correct';
+                    
+                    // Reset all options
+                    quizOptions.forEach(opt => {
+                        opt.classList.remove('border-primary', 'bg-primary/10', 'border-destructive', 'bg-destructive/10');
+                        opt.classList.add('border-border');
+                    });
+
+                    // Highlight selected option
+                    if (isCorrect) {
+                        option.classList.remove('border-border');
+                        option.classList.add('border-primary', 'bg-primary/10');
+                        // TODO: Implement scoring system and progress tracking
+                    } else {
+                        option.classList.remove('border-border');
+                        option.classList.add('border-destructive', 'bg-destructive/10');
+                        // TODO: Show correct answer and explanation
+                    }
+                });
+            });
+
+            // Riddle answer toggle
+            const riddleButton = document.querySelector('.bg-accent');
+            const riddleAnswer = document.getElementById('riddle-answer');
+            
+            if (riddleButton && riddleAnswer) {
+                riddleButton.addEventListener('click', () => {
+                    riddleAnswer.classList.toggle('hidden');
+                    riddleButton.textContent = riddleAnswer.classList.contains('hidden') ? 'Show Answer' : 'Hide Answer';
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
